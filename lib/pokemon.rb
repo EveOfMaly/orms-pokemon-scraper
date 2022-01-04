@@ -16,8 +16,7 @@ class Pokemon
     def self.find(id, db)
         db.execute( "SELECT * FROM pokemon where id = ?", id).map do |row|
            new_pokemon = Pokemon.new(id: row[0], name: row[1], type: row[2], db: db)
-           new_pokemon
-        end
+        end.first
 
         # def self.find(id, db)
         #     pokemon_info = db.execute( "SELECT * FROM pokemon where id = ?", id).flatten 
